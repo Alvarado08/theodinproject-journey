@@ -1,5 +1,5 @@
 # My Odin Project Journey
-Come along and follow my coding journey!
+Tag along and follow my coding journey!
 <p align="center">
     <img src="https://media.giphy.com/media/bAQH7WXKqtIBrPs7sR/giphy.gif">
 </p>
