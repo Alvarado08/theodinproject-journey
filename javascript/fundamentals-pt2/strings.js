@@ -37,6 +37,9 @@
 //* JavaScript counts positions from zero
 //* First position is 0
 //* Second position is 1 
+//* All string methods return a new string
+//* They don't modify the original string
+//* Strings are immutable: Strings cannot be changed, only replaced
 
 //* Length
 //? The length property returns the length of a string
@@ -79,6 +82,7 @@
 //* let part = text.substr(-11) = "a and Apple"
 
 //* Replacing String Content
+//* Replace
 //? The replace() method replaces a specified value with another value in a string
 //* ex. let text = "Please visit Microsoft!";
 //* let newText = text.replace("Microsoft", "W3Schools") = "Please visit W3Schools"
@@ -97,3 +101,90 @@
 //? You can even combine these 2 regular expression flags
 //* ex. let text = "Please visit MicRosoft and MicrosOft!";
 //* let newText = text.replace(/MICROSOFT/ig, "W3Schools") = "Please visit W3Schools and W3Schools!"
+//* ReplaceAll
+//? In 2021, JavaScript introduced the string method replaceAll()
+//* ex. text = text.replaceAll("Cats","Dogs");
+//* text = text.replaceAll("cats","dogs");
+//? The replaceAll() method allows you to specify a regular expression instead of a string to be replaced
+//? If the parameter is a regular expression, the global flag (g) must be set set
+//! Otherwise a TypeError is thrown
+//* ex. text = text.replaceAll(/Cats/g,"Dogs");
+//* text = text.replaceAll(/cats/g,"dogs");
+
+//* Converting to Upper and Lower Case
+//? A string is converted to upper case with toUpperCase()
+//* ex. let text1 = "Hello World!";
+//* let text2 = text1.toUpperCase() = "HELLO WORLD"
+//? A string is converted to lower case with toLowerCase()
+//* ex. let text1 = "Hello World!";      
+//* let text2 = text1.toLowerCase() = "hello world"
+
+//* JavaScript String concat()
+//? concat() joins two or more strings
+//* ex. let text1 = "Hello";
+//* let text2 = "World";
+//* let text3 = text1.concat(" ", text2);
+//? The first parameter is what the string is going to be joined with
+//? The concat() method can be used instead of the plus operator
+
+//* JavaScript String trims
+//* trim()
+//? The trim() method removes whitespace from both sides of a string
+//* ex. let text1 = "      Hello World!      ";
+//* let text2 = text1.trim() = "Hello World!"
+//* trimStart()
+//? ECMAScript 2019 added the String method trimStart() to JavaScript
+//? The trimStart() method works like trim()
+//? but removes whitespace only from the start of a string
+//* ex. let text1 = "     Hello World!     ";
+//* let text2 = text1.trimStart() = "Hello World!     "
+//* trimEnd()
+//? ECMAScript 2019 added the String method trimEnd() to JavaScript
+//? The trimEnd() method works like trim()
+//? but removes whitespace only from the end of a string
+//* ex. let text1 = "     Hello World!     ";
+//* let text2 = text1.trimEnd() = "     Hello World!"
+
+//* JavaScript String Padding
+//? ECMAScript 2017 added two String methods: padStart() and padEnd() to support padding
+//? at the beginning and at the end of a string
+//* padStart()
+//? The padStart() method pads a string with another string
+//* ex. let text = "5";
+//* let padded = text.padStart(4,"x") = "xxx5"
+//? To pad a number, convert the number to a string first
+//* ex. let numb = 5;
+//* let text = numb.toString();
+//* let padded = text.padStart(4,"0") = "0005"
+
+//* Extracting String Characters
+//? There are 3 methods for extracting string characters
+//* charAt(position)
+//* charCodeAt(position)
+//* Property access [ ]
+//* charAt()
+//? The charAt() method returns the character at a specified index (position) in a string
+//* let text = "HELLO WORLD";
+//* let char = text.charAt(0) = "H"
+//* charCodeAT()
+//? The charCodeAt() method returns the unicode of the character at a specified index in a string
+//? The method returns a UTF-16 code (an integer between 0 and 65535)
+//* let text = "HELLO WORLD";
+//* let char = text.charCodeAt(0) = 72
+//* Property Access
+//? ECMAScript 5 (2009) allows property access [ ] on strings
+//? It makes strings look like arrays (but they are not)
+//? If no character is found, [ ] returns undefined, while charAt() returns an empty string
+//? It is read only. str[0] = "A" gives no error (but does not work!)
+//* ex. let text = "HELLO WORLD";
+//* let char = text[0];
+
+//* Converting a String to an Array
+//? If you want to work with a string as an array, you can convert it to an array
+//? A string can be converted to an array with the split() method
+//* text.split(",") // Split on commas
+//* text.split(" ") // Split on spaces
+//* text.split("|") // Split on pipe
+//? If the separator is omitted, the returned array will contain the whole string in index [0]
+//? If the separator is "", the returned array will be an array of single characters
+//* text.split("")
