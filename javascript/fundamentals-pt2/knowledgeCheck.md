@@ -30,7 +30,7 @@
 ## What is the syntax for an if/else conditional?
 **if(condition is true){block of code inside brackets executes}else{if condition is not true, block of code inside these brackets executes}**
 ## What is the syntax for a switch statement?
-
+**switch () {} with parentheses containing the expression to test and curly brackets containing the potential code to execute**
 ## What is the syntax for a ternary operator?
 **if condition is true ? this value executes : if not, this value executes**
 ## What is nesting?
