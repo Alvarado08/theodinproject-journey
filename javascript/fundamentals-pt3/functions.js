@@ -1,6 +1,6 @@
 //* FUNCTIONS
 
-//* LINK: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions 
+//TODO LINK: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Functions 
 //* Functions — reusable blocks of code
 //? Another essential concept in coding is functions, which allow you to store a piece of code
 //? that does a single task inside a defined block
@@ -211,7 +211,7 @@
 //! The ReferenceError: "x" is not defined error is one of the most common you'll encounter
 //? If you get this error and you are sure that you have defined the variable in question, check what scope it is in
 
-//* LINK: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values
+//TODO LINK: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Return_values
 //* Function return values
 //? There's one last essential concept about functions for us to discuss — return values
 //? Some functions don't return a significant value, but others do
@@ -235,7 +235,7 @@
 //? We are returning the result of the calculation Math.floor(Math.random() * number) each time the function is called
 //? This return value appears at the point the function was called, and the code continues
 
-//* LINK: https://javascript.info/function-basics
+//TODO LINK: https://javascript.info/function-basics
 //* Functions
 //? Quite often we need to perform a similar action in many places of the script
 //? For example, we need to show a nice-looking message when a visitor logs in, logs out and maybe somewhere else
@@ -453,3 +453,317 @@
 //? Because of the flexibility that using a parameter provides, we can declare any animal to be our favorite
 //?  If we just called the function without console.logging what it returns
 //? nothing would appear in the console but nonetheless the function would return that string
+
+//TODO LINK: https://javascript.info/function-expressions
+//* Function expressions 
+//? In JavaScript, a function is not a “magical language structure”, but a special kind of value
+//? There is another syntax for creating a function that is called a Function Expression
+//? It allows us to create a new function in the middle of any expression
+//* let sayHi = function() {
+//*   alert( "Hello" );
+//* }; 
+//? Here we can see a variable sayHi getting a value, the new function, created as function() { alert("Hello"); }
+//? As the function creation happens in the context of the assignment expression (to the right side of =)
+//? this is a Function Expression
+//? Please note, there’s no name after the function keyword. Omitting a name is allowed for Function Expressions
+//? Here we immediately assign it to the variable, so the meaning of these code samples is the same
+//? "create a function and put it into the variable sayHi"
+
+//* Function is a value 
+//? Let’s reiterate: no matter how the function is created, a function is a value
+//? In JavaScript, a function is a value, so we can deal with it as a value
+//? Surely, a function is a special value, in the sense that we can call it like sayHi()
+//? But it’s still a value. So we can work with it like with other kinds of values
+//? We can copy a function to another variable
+//* function sayHi() {   // (1) create
+//*   alert( "Hello" );
+//* }
+//* let func = sayHi;    // (2) copy
+//* func(); // Hello     // (3) run the copy (it works)!
+//* sayHi(); // Hello    //     this still works too (why wouldn't it)
+//? The Function Declaration (1) creates the function and puts it into the variable named sayHi.
+//? Line (2) copies it into the variable func. Please note again: there are no parentheses after sayHi. If there were, then func = sayHi() would write the result of the call sayHi() into func, not the function sayHi itself.
+//? Now the function can be called as both sayHi() and func()
+//? We could also have used a Function Expression to declare sayHi, in the first line
+//* let sayHi = function() { // (1) create
+//*   alert( "Hello" );
+//* };
+//* let func = sayHi;
+//? Why is there a semicolon at the end?
+//? You might wonder, why do Function Expressions have a semicolon ; at the end, but Function Declarations do not
+//* let sayHi = function() {
+//* };
+//? The answer is simple: a Function Expression is created here as function(…) {…} inside the assignment statement
+//? let sayHi = …;. The semicolon ; is recommended at the end of the statement, it’s not a part of the function syntax
+//? The semicolon would be there for a simpler assignment, such as let sayHi = 5; 
+//? and it’s also there for a function assignment
+
+//* Callback functions
+//* function ask(question, yes, no) {
+//*   if (confirm(question)) yes()
+//*   else no();
+//* }
+
+//* function showOk() {
+//*   alert( "You agreed." );
+//* }
+
+//* function showCancel() {
+//*   alert( "You canceled the execution." );
+//* }
+
+//* // usage: functions showOk, showCancel are passed as arguments to ask
+//* ask("Do you agree?", showOk, showCancel);
+//? The arguments showOk and showCancel of ask are called callback functions or just callbacks
+//? The idea is that we pass a function and expect it to be “called back” later if necessary
+//? In our case, showOk becomes the callback for “yes” answer, and showCancel for “no” answer
+//? We can use Function Expressions to write an equivalent, shorter function
+//* function ask(question, yes, no) {
+//*     if (confirm(question)) yes()
+//*     else no();
+//*   }
+  
+//*   ask(
+//*     "Do you agree?",
+//*     function() { alert("You agreed."); },
+//*     function() { alert("You canceled the execution."); }
+//*   );
+//? Here, functions are declared right inside the ask(...) call. They have no name, and so are called anonymous
+//? Such functions are not accessible outside of ask (because they are not assigned to variables)
+//? A function is a value representing an “action”
+//? Regular values like strings or numbers represent the data
+//? A function can be perceived as an action
+//? We can pass it between variables and run when we want
+
+//* Function Expression vs Function Declaration
+//? Function Declaration: a function, declared as a separate statement, in the main code flow
+//* Function Declaration
+//* function sum(a, b) {
+//*     return a + b;
+//*   }
+//? Function Expression: a function, created inside an expression or inside another syntax construct. 
+//? Here, the function is created on the right side of the “assignment expression” =
+//* Function Expression
+//* let sum = function(a, b) {
+//*     return a + b;
+//*   };
+//? A Function Expression is created when the execution reaches it and is usable only from that moment
+//? Once the execution flow passes to the right side of the assignment let sum = function
+//? the function is created and can be used (assigned, called, etc. ) from now on
+//? A Function Declaration can be called earlier than it is defined
+//? For example, a global Function Declaration is visible in the whole script, no matter where it is
+//? That’s due to internal algorithms. When JavaScript prepares to run the script 
+//? it first looks for global Function Declarations in it and creates the functions. 
+//? We can think of it as an “initialization stage”
+//? And after all Function Declarations are processed, the code is executed. So it has access to these functions
+//* sayHi("John"); // Hello, John
+
+//* function sayHi(name) {
+//*   alert( `Hello, ${name}` );
+//* }
+//? The Function Declaration sayHi is created when JavaScript is preparing 
+//? to start the script and is visible everywhere in it
+//? If it were a Function Expression, then it wouldn’t work
+//* sayHi("John"); // error!
+
+//* let sayHi = function(name) {  // (*) no magic any more
+//*   alert( `Hello, ${name}` );
+//* };
+//? Function Expressions are created when the execution reaches them
+//? That would happen only in the line (*). Too late
+//? Another special feature of Function Declarations is their block scope
+//? In strict mode, when a Function Declaration is within a code block, it’s visible everywhere inside that block
+//? But not outside of it
+//? For instance, let’s imagine that we need to declare a function welcome() depending 
+//? on the age variable that we get during runtime
+//? And then we plan to use it some time later
+//? If we use Function Declaration, it won’t work as intended
+//* let age = prompt("What is your age?", 18);
+//* // conditionally declare a function
+//* if (age < 18) {
+
+//*   function welcome() {
+//*     alert("Hello!");
+//*   }
+
+//* } else {
+
+//*   function welcome() {
+//*     alert("Greetings!");
+//*   }
+
+//* }
+//* // ...use it later
+//* welcome(); // Error: welcome is not defined
+//? That’s because a Function Declaration is only visible inside the code block in which it resides
+//* let age = 16; // take 16 as an example
+
+//* if (age < 18) {
+//*   welcome();               // \   (runs)
+//*                            //  |
+//*   function welcome() {     //  |
+//*     alert("Hello!");       //  |  Function Declaration is available
+//*   }                        //  |  everywhere in the block where it's declared
+//*                            //  |
+//*   welcome();               // /   (runs)
+
+//* } else {
+
+//*   function welcome() {
+//*     alert("Greetings!");
+//*   }
+//* }
+
+//* // Here we're out of curly braces,
+//* // so we can not see Function Declarations made inside of them.
+
+//* welcome(); // Error: welcome is not defined
+//? The correct approach would be to use a Function Expression and assign welcome
+//? to the variable that is declared outside of if and has the proper visibility
+//* let age = prompt("What is your age?", 18);
+
+//* let welcome;
+
+//* if (age < 18) {
+
+//*   welcome = function() {
+//*     alert("Hello!");
+//*   };
+
+//* } else {
+
+//*   welcome = function() {
+//*     alert("Greetings!");
+//*   };
+
+//* }
+
+//* welcome(); // ok now
+//? Or we could simplify it even further using a question mark operator ?
+//* let age = prompt("What is your age?", 18);
+
+//* let welcome = (age < 18) ?
+//*   function() { alert("Hello!"); } :
+//*   function() { alert("Greetings!"); };
+
+//* welcome(); // ok now
+
+//* When to choose Function Declaration versus Function Expression?
+//? As a rule of thumb, when we need to declare a function 
+//? the first thing to consider is Function Declaration syntax
+//? It gives more freedom in how to organize our code, because we can call such functions before they are declared
+//? That’s also better for readability, as it’s easier to look up function f(…) {…} in the code than
+//? let f = function(…) {…};. Function Declarations are more “eye-catching”
+//? But if a Function Declaration does not suit us for some reason, or we need a conditional declaration
+//? then Function Expression should be used
+//? In most cases when we need to declare a function, a Function Declaration is preferable 
+//? because it is visible prior to the declaration itself
+//? That gives us more flexibility in code organization, and is usually more readable
+//? So we should use a Function Expression only when a Function Declaration is not fit for the task
+
+//TODO LINK: https://javascript.info/arrow-functions-basics
+//* Arrow functions, the basics
+//? There’s another very simple and concise syntax for creating functions 
+//? that’s often better than Function Expressions
+//? It’s called “arrow functions”, because it looks like this:
+//* let func = (arg1, arg2, ..., argN) => expression;
+//? This creates a function func that accepts arguments arg1..argN
+//? then evaluates the expression on the right side with their use and returns its result
+//? In other words, it’s the shorter version of
+//* let func = function(arg1, arg2, ..., argN) {
+//* return expression;
+//* };
+//? Let's see a concrete example
+//* let sum = (a, b) => a + b;
+//* /* This arrow function is a shorter form of:
+//* let sum = function(a, b) {
+//*   return a + b;
+//* };
+//* */
+//* alert( sum(1, 2) ); // 3
+//? As you can see, (a, b) => a + b means a function that accepts two arguments named a and b
+//? Upon the execution, it evaluates the expression a + b and returns the result
+//? If we have only one argument, then parentheses around parameters can be omitted, making that even shorter
+//* let double = n => n * 2;
+//* // roughly the same as: let double = function(n) { return n * 2 }
+//* alert( double(3) ); // 6
+//? If there are no arguments, parentheses are empty, but they must be present
+//* let sayHi = () => alert("Hello!");
+//* sayHi();
+//? Arrow functions can be used in the same way as Function Expressions
+//* let age = prompt("What is your age?", 18);
+//* let welcome = (age < 18) ?
+//*   () => alert('Hello!') :
+//*   () => alert("Greetings!");
+//* welcome();
+//? Arrow functions may appear unfamiliar and not very readable at first 
+//? but that quickly changes as the eyes get used to the structure
+//? They are very convenient for simple one-line actions, when we’re just too lazy to write many words
+
+//* Multiline arrow functions
+//? Sometimes we need a more complex function, with multiple expressions and statements
+//? In that case, we can enclose them in curly braces
+//? The major difference is that curly braces require a return within them 
+//? to return a value (just like a regular function does)
+//* let sum = (a, b) => {  // the curly brace opens a multiline function
+//*     let result = a + b;
+//*     return result; // if we use curly braces, then we need an explicit "return"
+//*   };
+//*   alert( sum(1, 2) ); // 3
+
+//TODO TASKS (Try on your own before looking at solution...)
+
+//* Rewrite with arrow functions
+//? Replace Function Expressions with arrow functions in the code below:
+//* function ask(question, yes, no) {
+//*     if (confirm(question)) yes();
+//*     else no();
+//*   }
+  
+//*   ask(
+//*     "Do you agree?",
+//*     function() { alert("You agreed."); },
+//*     function() { alert("You canceled the execution."); }
+//*   );
+//TODO Answer
+//* function ask(question, yes, no) {
+//*     if (confirm(question)) yes();
+//*     else no();
+//*   }
+
+//*   ask(
+//*     "Do you agree?",
+//*     () => { alert("You agreed."); },
+//*     () => { alert("You canceled the execution."); }
+//*   );
+
+//TODO LINK https://www.javascripttutorial.net/javascript-call-stack/
+//* JavaScript Call Stack
+//? A call stack is a way for the JavaScript engine to keep track of its place in code that calls multiple functions
+//? It has the information on what function is currently being run 
+//? and what functions are invoked from within that function
+//? Also, the JavaScript engine uses a call stack to manage execution contexts
+//? Global execution context
+//? function execution contexts
+//? The call stack works based on the LIFO principle i.e., last-in-first-out
+//? When you execute a script, the JavaScript engine creates a global execution context 
+//? and pushes it on top of the call stack
+//? Whenever a function is called, the JavaScript engine creates a function execution context for the function
+//? pushes it on top of the call stack, and starts executing the function
+//? If a function calls another function, the JavaScript engine creates a new function execution context
+//? for the function being called and pushes it on top of the call stack
+//? When the current function completes, the JavaScript engine pops it off the call stack
+//? and resumes the execution where it left off
+//? The script will stop when the call stack is empty
+
+//* Asynchronous JavsScript
+//? JavaScript is a single-threaded programming language
+//? This means that the JavaScript engine has only one call stack. Therefore, it only can do one thing at a time
+//? When executing a script, the JavaScript engine executes code from top to bottom, line by line
+//? In other words, it is synchronous
+//? Asynchronous means the JavaScript engine can execute other tasks while waiting for another task to be completed
+//* For example
+//* Request for data from a remote server
+//* Display a spinner
+//* When the data is available, display it on the webpage
+//? To do this, the JavaScript engine uses an event loop
