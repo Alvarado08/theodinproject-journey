@@ -13,3 +13,4 @@
 ## What is pseudocode?
 **Writing out the logic in natural language instead of code in order to think through the steps of a program**
 ## What are the advantages of breaking a problem down and solving the smaller problems?
+**It's a better way of dealing with complexity. Reveals the next step/subproblem that should be solved from the big problem**
