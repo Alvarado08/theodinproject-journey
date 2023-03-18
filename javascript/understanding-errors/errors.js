@@ -1,7 +1,7 @@
 //* LINK: https://www.theodinproject.com/lessons/foundations-understanding-errors
 //* ERRORS
 
-//* The Anatomy of an Error
+//TODO The Anatomy of an Error
 //? An error is a type of object built into the JS language, consisting of a name/type and a message
 //? Errors contain crucial information that can assist you in locating the code responsible for the error
 //? determining why you have this error, and resolving the error
@@ -46,5 +46,63 @@
 //? print() itself was called on line 12
 //? Thus the stack trace lets you trace the evolution of an error back to its origin, which here is the declaration of add()
 
-//* Common Types of Errors
+//TODO Common Types of Errors
 //? These are some of the most common errors you will encounter, so it’s important to understand them
+
+//* Syntax Error
+//? A syntax error occurs when the code you are trying to run is not written correctly
+//? in accordance with the grammatical rules of JavaScript.
+//* For example:
+//* function helloWorld() {
+//*     console.log "Hello World!"
+//*   }
+//* will throw the following error, because we forgot the parentheses for console.log()!
+//! Uncaught SyntaxError: Invalid or unexepected token
+
+//*Reference Error
+//? These arise because whatever variable you are trying to reference does not exist (within the current scope)
+//? or it has been spelled incorrectly!
+
+//* Type Error
+//? These errors are thrown for a few different reasons:
+//? - an operand or argument passed to a function is incompatible with the type expected by that operator or function
+//? - when attempting to modify a value that cannot be changed
+//? - when attempting to use a value in an inappropriate way
+//* Say we have two strings that you would like to combine to create one message, such as below:
+//* const str1 = "Hello";
+//* const str2 = "World!";
+//* const message = str1.push(str2);
+//! Here, we get a TypeError with a message stating that str1.push is not a function
+//? This is a common error message that confuses learners, because we know that .push() is certainly a function!
+//? You’ve probably used it to add items to arrays before, but that’s the key
+//? .push() is not a String method, it’s an Array method. Hence, it is “not a function” that you can find as a String method
+//? If we change .push() to .concat(), a proper String method, our code runs as intended!
+//? A good note to keep in mind when faced with a TypeError is to consider the data type 
+//? you are trying to run a method or operation against. You’ll likely find that it is not what you think
+//? or the operation or method is not compatible with that type
+
+//TODO Tips for resolving errors
+//? 1. Read the error carefully and try to understand it on your own
+//? 2. Next, Google the error! Chances are, you can find a fix or explanation on StackOverflow or in the documentation
+//? If nothing else, you will receive more clarity as to why you are receiving this error
+//? 3. Use the debugger! As previously mentioned, the debugger is great for more involved troubleshooting
+//? and is a critical tool for a developer
+//? You can set breakpoints, view the value of any given variable at any point in your application’s execution
+//? step through code line by line, and more!
+//? It is an extremely valuable tool and every programmer should know how to use it
+//? 4. Make use of the console! console.log() is a popular choice for quick debugging
+//? For more involved troubleshooting, using the debugger might be more appropriate, 
+//? but using console.log() is great for getting immediate feedback without needing to step through your functions
+//? There are also other useful methods such as console.table(), console.trace(), and more!
+
+//TODO Errors vs Warnings
+//? Lastly, many people are met with warnings and treat them as errors
+//? Errors will stop the execution of your program or whatever process you may be attempting
+//? to run and prevent further action. 
+//? Warnings, on the other hand, are messages that provide you insight on potential problems
+//? that may not necessarily crash your program at runtime, or at all!
+//? While you should address these warnings if possible and as soon as possible
+//? warnings are not as significant as errors and are more likely to be informational
+//? Warnings are typically shown in yellow, while errors are typically shown in red
+//? Though these colors are not a rule, frequently there will be a visual differentiation between the two
+//? regardless of the platform you are encountering them on
