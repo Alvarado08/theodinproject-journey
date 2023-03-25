@@ -17,3 +17,15 @@
 
 ## What are some useful array methods?
 **join, push, pop, shift, unshift, concat, flat, splice, slice**
+
+## What are loops useful for?
+**For repeating a task multiple times**
+
+## What is the break statement?
+**Similar to the switch conditional, break stops program as soon as loop condition is reached**
+
+## What is the continue statement?
+**The continue statement will immediately exit a loop before all the iterations have been completed**
+
+## What is the advantage of writing automated tests?
+**You will count with the necessary test cases to make sure it returns the expected output**
