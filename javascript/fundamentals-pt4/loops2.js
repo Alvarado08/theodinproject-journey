@@ -388,3 +388,17 @@ for (let i = 0; i < 3; i++) {
 //? Write the code which outputs prime numbers in the interval from 2 to n
 //? For n = 10 the result will be 2,3,5,7
 //? P.S. The code should work for any n, not be hard-tuned for any fixed value
+
+// Prime Number: integer greater than 1 that is only divisible by itself and 1 without a remainder 
+// loop through 2 - 10
+// if conditional to obtain primes
+// if number has more than one dividens, its not a prime number
+// print prime numbers
+
+nextPrime:
+for(let i = 2; i <= 10; i++){
+  for(let j = 2; j < i; j++){
+    if(i % j == 0)continue nextPrime;
+  }
+  console.log(i);
+}
