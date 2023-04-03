@@ -163,3 +163,160 @@ document.getElementById("demo").innerHTML = fruits18.toString(); //* Output: The
 
 const fruits19 = ["Banana", "Orange", "Apple", "Mango"];
 document.getElementById("demo").innerHTML = fruits19; //* Output: JavaScript automatically converts an array to a comma separated string when a simple value is expected
+
+//TODO JavaScript Sorting Arrays
+
+//TODO LINK: https://www.w3schools.com/js/js_array_sort.asp
+
+//TODO Sorting an Array
+
+//? Sort()
+//? The sort() method sorts an array alphabetically:
+
+const fruits20 = ["Banana", "Orange", "Apple", "Mango"];
+fruits20.sort(); //* Output: "Apple,Banana,Mango,Orange"
+
+//TODO Reversing an Array
+
+//? Reverse()
+//? The reverse() method reverses the elements in an array
+//? You can use it to sort an array in descending order
+
+const fruits21 = ["Banana", "Orange", "Apple", "Mango"];
+fruits21.sort();
+fruits21.reverse();
+
+//TODO Numeric Sort
+
+//? By default, the sort() function sorts values as strings
+//? However, if numbers are sorted as strings, "25" is bigger than "100", because "2" is bigger than "1"
+//? Because of this, the sort() method will produce incorrect result when sorting numbers
+
+//? You can fix this by providing a compare function:
+const points = [40, 100, 1, 5, 25, 10];
+points.sort(function(a, b){return a - b});
+
+//TODO The Compare Function
+
+//? The purpose of the compare function is to define an alternative sort order
+//? The compare function should return a negative, zero, or positive value, depending on the arguments:
+//* function(a, b){return a - b}
+
+//? When the sort() function compares two values, it sends the values to the compare function
+//? and sorts the values according to the returned (negative, zero, positive) value
+//? If the result is negative, a is sorted before b
+//? If the result is positive, b is sorted before a
+//? If the result is 0, no changes are done with the sort order of the two values
+
+//* Example:
+//? The compare function compares all the values in the array, two values at a time (a, b)
+//? When comparing 40 and 100, the sort() method calls the compare function(40, 100)
+//? The function calculates 40 - 100 (a - b), and since the result is negative (-60)
+//? the sort function will sort 40 as a value lower than 100
+
+//? Math.max()
+//? You can use Math.max.apply to find the highest number in an array:
+function myArrayMax(arr) {
+  return Math.max.apply(null, arr);
+}
+
+//* Math.max.apply(null, [1, 2, 3]) is equivalent to Math.max(1, 2, 3)
+
+//? Math.min()
+//? You can use Math.min.apply to find the lowest number in an array:
+function myArrayMin(arr) {
+  return Math.min.apply(null, arr);
+}
+
+//* Math.min.apply(null, [1, 2, 3]) is equivalent to Math.min(1, 2, 3)
+
+//TODO JavaScript Array Iteration
+//TODO LINK: https://www.w3schools.com/js/js_array_iteration.asp
+
+//? Array iteration methods operate on every array item
+
+//? forEach()
+//? The forEach() method calls a function (a callback function) once for each array element
+
+const numbers = [45, 4, 9, 16, 25];
+let txt = "";
+numbers.forEach(myFunction);
+
+function myFunction(value, index, array) {
+  txt += value + "<br>";
+}
+
+//? Note that the function takes 3 arguments:
+//? The item value
+//? The item index
+//? The array itself
+
+//? The example above uses only the value parameter. The example can be rewritten to:
+
+const numbers2 = [45, 4, 9, 16, 25];
+let txt2 = "";
+numbers2.forEach(myFunction);
+
+function myFunction(value) {
+  txt2 += value + "<br>";
+}
+
+//? map()
+
+//? The map() method creates a new array by performing a function on each array element
+//? The map() method does not execute the function for array elements without values
+//? The map() method does not change the original array
+
+//* This example multiplies each array value by 2:
+const numbers3 = [45, 4, 9, 16, 25];
+const numbers4 = numbers3.map(myFunction);
+
+function myFunction(value, index, array) {
+  return value * 2;
+}
+
+//? Note that the function takes 3 arguments:
+//? The item value
+//? The item index
+//? The array itself
+
+//? When a callback function uses only the value parameter, the index and array parameters can be omitted:
+const numbers5 = [45, 4, 9, 16, 25];
+const numbers6 = numbers5.map(myFunction);
+
+function myFunction(value) {
+  return value * 2;
+}
+
+//? flatMap()
+
+//? ES2019 added the Array flatMap() method to JavaScript
+//? The flatMap() method first maps all elements of an array and then creates a new array by flattening the array
+
+const myArr2 = [1, 2, 3, 4, 5, 6];
+const newArr2 = myArr2.flatMap((x) => x * 2);
+
+//? filter()
+
+//? The filter() method creates a new array with array elements that pass a test
+
+//* This example creates a new array from elements with a value larger than 18
+const numbers7 = [45, 4, 9, 16, 25];
+const over18 = numbers7.filter(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+
+//? Note that the function takes 3 arguments:
+//? The item value
+//? The item index
+//? The array itself
+
+//? In the example above, the callback function does not use the index and array parameters, so they can be omitted:
+const numbers8 = [45, 4, 9, 16, 25];
+const over18_2 = numbers8.filter(myFunction);
+
+function myFunction(value) {
+  return value > 18;
+}
