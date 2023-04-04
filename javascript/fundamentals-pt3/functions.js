@@ -498,7 +498,7 @@
 //? The semicolon would be there for a simpler assignment, such as let sayHi = 5; 
 //? and it’s also there for a function assignment
 
-//* Callback functions
+//TODO Callback functions
 //* function ask(question, yes, no) {
 //*   if (confirm(question)) yes()
 //*   else no();

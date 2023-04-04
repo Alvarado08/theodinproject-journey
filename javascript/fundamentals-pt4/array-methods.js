@@ -235,7 +235,7 @@ function myArrayMin(arr) {
 
 //? Array iteration methods operate on every array item
 
-//? forEach()
+//* forEach()
 //? The forEach() method calls a function (a callback function) once for each array element
 
 const numbers = [45, 4, 9, 16, 25];
@@ -261,7 +261,7 @@ function myFunction(value) {
   txt2 += value + "<br>";
 }
 
-//? map()
+//* map()
 
 //? The map() method creates a new array by performing a function on each array element
 //? The map() method does not execute the function for array elements without values
@@ -288,7 +288,7 @@ function myFunction(value) {
   return value * 2;
 }
 
-//? flatMap()
+//* flatMap()
 
 //? ES2019 added the Array flatMap() method to JavaScript
 //? The flatMap() method first maps all elements of an array and then creates a new array by flattening the array
@@ -296,7 +296,7 @@ function myFunction(value) {
 const myArr2 = [1, 2, 3, 4, 5, 6];
 const newArr2 = myArr2.flatMap((x) => x * 2);
 
-//? filter()
+//* filter()
 
 //? The filter() method creates a new array with array elements that pass a test
 
@@ -320,3 +320,62 @@ const over18_2 = numbers8.filter(myFunction);
 function myFunction(value) {
   return value > 18;
 }
+
+//* reduce()
+
+
+//* every()
+
+//? The every() method checks if all array values pass a test
+
+//? This example checks if all array values are larger than 18:
+
+const numbers9 = [45, 4, 9, 16, 25];
+let allOver18 = numbers9.every(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+
+//? When a callback function uses the first parameter only (value), the other parameters can be omitted:
+
+const numbers10 = [45, 4, 9, 16, 25];
+let allOver18_3 = numbers10.every(myFunction); //* Output: false
+
+function myFunction(value) {
+  return value > 18;
+}
+
+//* indexOf()
+
+//? The indexOf() method searches an array for an element value and returns its position
+
+const fruits8 = ["Apple", "Orange", "Apple", "Mango"];
+let position = fruits8.indexOf("Apple"); //* Output: 0
+let position2 = fruits8.indexOf("Apple") + 1; //* Output: 2 (The second position it appears)
+
+//* lastindexOf()
+
+//* find()
+
+//? The find() method returns the value of the first array element that passes a test function
+
+//? This example finds (returns the value of) the first element that is larger than 18:
+
+const numbers11 = [4, 9, 16, 25, 29];
+let first = numbers.find(myFunction);
+
+function myFunction(value) {
+  return value > 18;
+}
+
+//* findIndex()
+
+
+//* includes()
+
+//? This allows us to check if an element is present in an array (including NaN, unlike indexOf)
+
+const fruits8 = ["Banana", "Orange", "Apple", "Mango"];
+
+fruits8.includes("Mango"); //* Output: true
