@@ -26,3 +26,21 @@
 
 ## How do “events” and “listeners” work?
 **Events are actions that occur on your webpage such as mouse-clicks or keypresses so the webpage can listen and react to them**
+
+## What are three ways to use events in your code?
+**Inline onclick event, external onclick property and eventListener**
+
+## Why are event listeners the preferred way to handle events?
+**They can be used multiple times**
+
+## How do you attach listeners to groups of nodes?
+**First, select all items to convert to a nodelist with querySelectorAll('selector'). Then, to add a listener to each of them, we simply need to iterate through the whole list with forEach method**
+
+## What is the difference between the return values of querySelector and querySelectorAll?
+**querySelector returns a reference to the first match of selector while querySelectorAll returns a node list containing references to all of the matches of the selectors**
+
+## What does a “nodelist” contain?
+**References to all matches of the selectors**
+
+## Explain the difference between “capture” and “bubbling”
+**Capture happens first from the outside (document) which first grabs the farthest element then works down to the closest with the eventListener while bubbling grabs elements from the inside out, the closest with eventListener to farthest element. Capture moves down the tree and bubbling moves up the tree**
