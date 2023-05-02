@@ -91,12 +91,12 @@ let user5 = {
 let key2 = prompt("What do you want to know about the user?", "name");
 
 // access by variable
-alert( user[key] ); // John (if enter "name")
+console.log( user[key] ); // John (if enter "name")
 
 //! The dot notation cannot be used in a similar way:
 
 let key3 = "name";
-alert( user.key ) // undefined
+console.log( user.key ) // undefined
 
 //* Computed Properties 
 //? We can use square brackets in an object literal, when creating an object. That’s called computed properties
@@ -108,7 +108,7 @@ let bag = {
   [fruit]: 5, // the name of the property is taken from the variable fruit
 };
 
-alert( bag.apple ); // 5 if fruit="apple"
+console.log( bag.apple ); // 5 if fruit="apple"
 
 //? The meaning of a computed property is: [fruit] means that the property name should be taken from fruit
 
@@ -120,7 +120,7 @@ alert( bag.apple ); // 5 if fruit="apple"
 
 let fruit2 = 'apple';
 let bag2 = {
-  [fruit + 'Computers']: 5 // bag.appleComputers = 5
+  [fruit2 + 'Computers']: 5 // bag.appleComputers = 5
 };
 
 //? Square brackets are much more powerful than dot notation
@@ -192,7 +192,7 @@ console.log(obj2[0]); // test
 //? We can’t set it to a non-object value:
 let obj3 = {};
 obj3.__proto__ = 5; // assign a number
-alert(obj.__proto__); // [object Object] - the value is an object, didn't work as intended
+console.log(obj.__proto__); // [object Object] - the value is an object, didn't work as intended
 // the assignment to a primitive 5 is ignored
 
 //* Property existence test, “in” operator
@@ -202,7 +202,7 @@ alert(obj.__proto__); // [object Object] - the value is an object, didn't work a
 
 // we can easily test whether the property exists:
 let user7 = {};
-alert( user7.noSuchProperty === undefined ); // true means "no such property"
+console.log( user7.noSuchProperty === undefined ); // true means "no such property"
 
 //? There’s also a special operator "in"
 //? The syntax is: "key" in object
@@ -230,8 +230,8 @@ let obj4 = {
   test: undefined
 };
 
-alert( obj.test ); // it's undefined, so - no such property?
-alert( "test" in obj ); // true, the property does exist!
+console.log( obj.test ); // it's undefined, so - no such property?
+console.log( "test" in obj ); // true, the property does exist!
 //? In the code above, the property obj.test technically exists. So the in operator works right
 
 //? Situations like this happen very rarely, because undefined should not be explicitly assigned
@@ -268,3 +268,158 @@ for(let key in user9){
 //? For instance, "for (let prop in obj)" is also widely used
 
 //* Ordered like an object
+//? Are objects ordered? In other words, if we loop over an object, do we get all properties in the same order they were added?
+//? The short answer is: “ordered in a special fashion”
+//? integer properties are sorted, others appear in creation order
+
+// As an example, let’s consider an object with the phone codes:
+let codes = {
+  "49": "Germany",
+  "41": "Switzerland",
+  "44": "Great Britain",
+  // ..,
+  "1": "USA"
+};
+for (let code in codes) {
+  console.log(code); // 1, 41, 44, 49
+}
+
+// if we run the code, we see a totally different picture:
+// USA (1) goes first, then Switzerland (41) and so on
+// The phone codes go in the ascending sorted order, because they are integers
+
+//? The “integer property” term here means a string that can be converted to-and-from an integer without a change
+//? So, "49" is an integer property name, because when it’s transformed to an integer number and back, it’s still the same
+
+// But "+49" and "1.2" are not
+// Number(...) explicitly converts to a number
+// Math.trunc is a built-in function that removes the decimal part
+console.log( String(Math.trunc(Number("49"))) ); // "49", same, integer property
+console.log( String(Math.trunc(Number("+49"))) ); // "49", not same "+49" ⇒ not integer property
+console.log( String(Math.trunc(Number("1.2"))) ); // "1", not same "1.2" ⇒ not integer property
+
+//? On the other hand, if the keys are non-integer, then they are listed in the creation order
+
+// For instance:
+let user10 = {
+  name: "John",
+  surname: "Smith"
+};
+user.age = 25; // add one more
+
+// non-integer properties are listed in the creation order
+for (let prop in user10) {
+  console.log( prop ); // name, surname, age
+}
+
+//? So, to fix the issue with the phone codes, we can “cheat” by making the codes non-integer
+//? Adding a plus "+" sign before each code is enough
+let codes2 = {
+  "+49": "Germany",
+  "+41": "Switzerland",
+  "+44": "Great Britain",
+  // ..,
+  "+1": "USA"
+};
+
+for (let code in codes2) {
+  console.log( +code ); // 49, 41, 44, 1
+}
+
+//* Summary
+
+// Objects store properties (key-value pairs), where:
+//? Property keys must be strings or symbols (usually strings)
+//? Values can be of any type
+
+// To access a property, we can use:
+//? The dot notation: obj.property
+//? Square brackets notation obj["property"] 
+//? Square brackets allow taking the key from a variable, like obj[varWithKey]
+
+// Additional operators:
+//? to delete a property: delete obj.prop
+//? To check if a property with the given key exists: "key" in obj
+//? To iterate over an object: for (let key in obj) loop
+
+//? We studied in this chapter is called a “plain object”, or just Object
+
+// There are many other kinds of objects in JavaScript:
+//? Array to store ordered data collections
+//? Date to store the information about the date and time
+//? Error to store the information about an error
+//? these are not types of their own, but belong to a single “object” data type
+
+//* Tasks
+
+//? Hello, object
+// Write the code, one line for each action:
+//? 1. Create an empty object user
+//? 2. Add the property name with the value John
+//? 3. Add the property surname with the value Smith
+//? 4. Change the value of the name to Pete
+//? 5. Remove the property name from the object
+
+//1
+let superUser = {};
+//2
+superUser.name = "John";
+//3
+superUser.surname = "Smith";
+//4
+superUser["name"] = "Pete";
+//5
+delete superUser["name"];
+console.log(superUser);
+
+//? Check for emptiness
+// Write the function isEmpty(obj) which returns true if the object has no properties, false otherwise
+
+let schedule = {};
+function isEmpty(obj){
+  for(let key in obj){
+    // if loop starts, a property exists
+    return false;
+  }
+  return true;
+}
+// second try
+
+//? Sum object properties
+// Write the code to sum all salaries and store in the variable sum
+// Should be 390 in the example below
+// If salaries is empty, then the result must be 0
+let salaries = {
+  John: 100,
+  Ann: 160,
+  Pete: 130,
+}
+let sum = 0;
+for(let salary in salaries){
+  // no need to console.log
+  // salaries[salary] = sum;
+  // or
+  sum += salaries[salary];
+}
+
+//? Multiply numeric property values by 2
+// Create a function multiplyNumeric(obj) that multiplies all numeric property values of obj by 2
+// note that multiplyNumeric does not need to return anything
+// It should modify the object in-place
+
+let menu = {
+  width: 200,
+  height: 300,
+  title: "My menu"
+};
+
+function multiplyNumeric(obj){
+  for(let num in obj){
+    if(typeof obj[num] == "number"){
+      obj[num] *= 2;
+    }
+  }
+}
+// second try
+
+multiplyNumeric(menu);
