@@ -27,3 +27,11 @@ User.prototype.greet = function(){
 ## Understand the basic do’s and don’t’s of prototypical inheritance
 
 **The prototype chain has to be set up using this function before creating any objects. Using setPrototypeOf() after objects have already been created can result in performance issues. Don't use: Player.prototype = Person.prototype because it will set Player.prototype to directly refer to Person.prototype (i.e. not a copy).**
+
+## Explain what Object.create does
+
+**Object.create() is a static method that creates a new object. Uses an existing object as the prototype of the newly created object. It is similar to a constructor. Mimics the behavior of the new keyword.**
+
+## How does this behave in different situations?
+
+**The this keyword references current obj being handled. It's the object before the dot.**
