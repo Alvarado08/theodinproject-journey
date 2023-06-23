@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Prototypes Review</title>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-slate-700">
+    <main class="flex flex-col md:flex-row items-center space-x-0 space-y-6 md:space-x-6 md:space-y-0 text-white">
+        <section class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apple" width="70" height="70" viewBox="0 0 24 24" stroke-width="2" stroke="red" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 14m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                <path d="M12 11v-6a2 2 0 0 1 2 -2h2v1a2 2 0 0 1 -2 2h-2"></path>
+                <path d="M10 10.5c1.333 .667 2.667 .667 4 0"></path>
+             </svg>
+             <p class="font-bold text-xl">Instance: <span id="red" class="apple text-lg"></span></p>
+             <p class="font-bold text-xl">Protoype Method: <span id="red" class="eat text-lg"></span></p>
+        </section>
+        <section class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apple" width="70" height="70" viewBox="0 0 24 24" stroke-width="2" stroke="green" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 14m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                <path d="M12 11v-6a2 2 0 0 1 2 -2h2v1a2 2 0 0 1 -2 2h-2"></path>
+                <path d="M10 10.5c1.333 .667 2.667 .667 4 0"></path>
+             </svg>
+             <p class="font-bold text-xl">Instance: <span id="green" class="apple text-lg"></span></p>
+             <p class="font-bold text-xl">Protoype Method: <span id="green" class="eat text-lg"></span></p>
+        </section>
+        <section class="flex flex-col items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apple" width="70" height="70" viewBox="0 0 24 24" stroke-width="2" stroke="yellow" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M12 14m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0"></path>
+                <path d="M12 11v-6a2 2 0 0 1 2 -2h2v1a2 2 0 0 1 -2 2h-2"></path>
+                <path d="M10 10.5c1.333 .667 2.667 .667 4 0"></path>
+             </svg>
+             <p class="font-bold text-xl">Instance: <span id="yellow" class="apple text-lg"></span></p>
+             <p class="font-bold text-xl">Protoype Method: <span id="yellow" class="eat text-lg"></span></p>
+        </section>
+    </main>
+</body>
+</html>
