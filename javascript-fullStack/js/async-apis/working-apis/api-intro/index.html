@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Intro Practice</title>
+</head>
+<body>
+    <img src="#" alt="Giphy Image">
+    <script>
+        const image = document.querySelector('img');
+        fetch('https://api.giphy.com/v1/gifs/translate?api_key=h8fIuGBtpHZrfCQ8jJoaqahOYGWI05Vk&s=cats',{mode:"cors"})
+        .then((response) => {
+            return response.json();
+        })
+        .then((response) => {
+            image.src = response.data.images.original.url;
+        })
+    </script>
+</body>
+</html>
