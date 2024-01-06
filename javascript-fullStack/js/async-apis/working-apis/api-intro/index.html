@@ -4,18 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>API Intro Practice</title>
+    <style>
+        button{
+            cursor: pointer;
+        }
+        input{
+            border-color: black;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <img src="#" alt="Giphy Image">
+    <h3>Search GIPH</h3>
+    <input type="text" style="padding: 10px 15px; margin:10px 0"><br>
+    <button id="search" style="background: green; color: white; padding: 10px 15px; margin: 5px 0; border:0; border-radius:4px;font-weight: bold;">Search</button><br>
+    <img src="#" alt="Giphy Image"><br>
+    <button id="new" style="background: blue; color: white; padding: 10px 15px; margin: 5px 0; border:0; border-radius:4px;font-weight: bold;">NEW GIF</button>
     <script>
         const image = document.querySelector('img');
-        fetch('https://api.giphy.com/v1/gifs/translate?api_key=h8fIuGBtpHZrfCQ8jJoaqahOYGWI05Vk&s=cats',{mode:"cors"})
+        const newGiphBtn = document.querySelector('#new');
+        const searchGiphBtn = document.querySelector('#search');
+        const inputEl = document.querySelector('input');
+        fetch('https://api.giphy.com/v1/gifs/translate?api_key=1234&s=cats',{mode:"cors"})
         .then((response) => {
             return response.json();
         })
         .then((response) => {
             image.src = response.data.images.original.url;
         })
+        .catch((error) => {
+            console.log(`Something went wrong: ${error}`);
+        })
+        function newGiph(){
+            if(inputEl.value.trim() === ''){
+                fetch('https://api.giphy.com/v1/gifs/translate?api_key=1234&s=cats',{mode:"cors"})
+                .then((response) => {
+                    return response.json();
+                })
+                .then((response) => {
+                    image.src = response.data.images.original.url;
+                })
+                .catch((error) => {
+                    console.log(`Something went wrong: ${error}`);
+                })
+            }else{
+                fetch(`https://api.giphy.com/v1/gifs/translate?api_key=1234&s=${inputEl.value}`,{mode:"cors"})
+                .then((response) => {
+                    return response.json();
+                })
+                .then((response) => {
+                    image.src = response.data.images.original.url;
+                })
+                .catch((error) => {
+                    console.log(`Something went wrong: ${error}`);
+                })
+            }
+        }
+        function searchGiph(){
+            let searchValue = inputEl.value;
+            fetch(`https://api.giphy.com/v1/gifs/translate?api_key=1234&s=${searchValue}`,{mode:"cors"})
+            .then((response) => {
+                return response.json();
+            })
+            .then((response) => {
+                image.src = response.data.images.original.url;
+            })
+            .catch((error) => {
+                alert(`Something went wrong: ${error}`);
+            })
+        }
+        newGiphBtn.addEventListener('click',newGiph);
+        searchGiphBtn.addEventListener('click',searchGiph);
     </script>
 </body>
 </html>
