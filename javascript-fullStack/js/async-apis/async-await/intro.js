@@ -64,6 +64,15 @@ asyncFunctionCall().catch(err => {
 //? But there is another way: the mighty try/catch block!
 //* If you want to handle the error directly inside the async function, you can use try/catch
 
+function getPeople() {
+    return new Promise((resolve, reject) => {
+      // Simulating a delayed network call to the server
+      setTimeout(() => {
+        resolve("Success: Here's all the people!");
+      }, 2000);
+    })
+}
+
 async function getPersonsInfo(name){
     try {
         const people = await server.getPeople();

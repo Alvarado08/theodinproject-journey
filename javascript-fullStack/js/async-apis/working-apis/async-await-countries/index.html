@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Countries API</title>
+</head>
+<body>
+    <header class="p-5 space-y-3">
+        <h1 class="text-2xl font-bold">Countries of The World</h1>
+        <p class="font-semibold">Search for a country and get some quick info about it!</p>
+        <input class="rounded border-gray-400 border-2 py-2 px-4 text-gray-500 duration-300 ease-in-out block w-full max-w-xs" type="text" name="country-input" id="country-input" placeholder="What country are you looking for?">
+        <button class="bg-blue-700 text-white py-2 px-4 rounded">Search Country</button>
+    </header>
+    <main class="p-5 space-y-3"></main>
+    <script>
+        const mainEl = document.querySelector('main');
+        const inputEl = document.querySelector('input');
+        const searchBtn = document.querySelector('button');
+        
+        async function getData(){
+            let inputValue = inputEl.value.trim();
+            const url = `https://restcountries.com/v3.1/name/${inputValue}`;
+            const request = new Request(url,{
+                mode:"cors",
+            });
+            try{
+                const response = await fetch(request);
+                const data = await response.json();
+                if(response.status !== 404){
+                    console.log(data);
+                    showData(data);
+                }else if(response.status === 404){
+                    alert("Oops...This country doesn't exist!");
+                }else{
+                    alert('Server error!');
+                }
+            }catch(error){
+                alert('Initial fetch error!',error);
+            }
+        }
+        function showData(data){
+            mainEl.innerHTML = `
+                <img src="${data[0].flags.png}" class="w-full max-w-xs">
+                <h1 class="text-xl font-bold">${data[0].name.common}</h1>
+                <h4 class="font-semibold">Capital:<span class="font-normal"> ${data[0].capital[0]}</span></h4>
+                <h4 class="font-semibold">Region:<span class="font-normal"> ${data[0].region}</span></h4>
+                <h4 class="font-semibold">Subregion:<span class="font-normal"> ${data[0].subregion}</span></h4>
+                <h4 class="font-semibold">Population:<span class="font-normal"> ${data[0].population}</span></h4>
+            `
+        }
+        searchBtn.addEventListener("click",getData);
+    </script>
+</body>
+</html>
