@@ -9,6 +9,7 @@ import Conditional from './Conditional.jsx'
 import Conditional2 from './Conditional2.jsx'
 import Props2 from './props/Props2.jsx'
 import Click from './props/Click.jsx'
+import State from './hooks/State.jsx'
 import { Food } from './Food.jsx'
 import './index.css'
 
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     {/* <Conditional/> */}
     {/* <Conditional2/> */}
     {/* <Props2/> */}
-    <Click/>
+    {/* <Click/> */}
+    <State/>
   </React.StrictMode>,
 )
