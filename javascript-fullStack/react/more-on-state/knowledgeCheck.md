@@ -18,7 +18,7 @@ When a callback is passed to the `setState` function, it ensures that the latest
 
 ## Why should we always provide a new Object to setState?
 
-Because if we don’t provide a new object to setState it is not guaranteed to re-render the page. `setState` uses `Object.is` to determine if the previous state is the same.
+Because if we don’t provide a new object to setState it is not guaranteed to re-render the component. `setState` uses `Object.is` to determine if the previous state is the same.
 
 ## Why would you want to control a component?
 
