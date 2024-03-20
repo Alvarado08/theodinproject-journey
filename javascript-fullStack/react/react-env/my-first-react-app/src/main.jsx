@@ -12,6 +12,7 @@ import Click from "./props/Click.jsx";
 import State from "./hooks/State.jsx";
 import Color from "./hooks/Color.jsx";
 import Person from "./more-state/Person.jsx";
+import Person2 from "./more-state/Person2.jsx";
 import { Food } from "./Food.jsx";
 import "./index.css";
 
@@ -26,6 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <Click/> */}
     {/* <State/> */}
     {/* <Color/> */}
-    <Person />
+    {/* <Person /> */}
+    <Person2 />
   </React.StrictMode>
 );
